@@ -12,11 +12,23 @@ gallery.innerHTML = galleryArray.join("");
 
 gallery.addEventListener("click", (event) => {
   event.preventDefault();
+  if (event.target.nodeName !== "IMG") {
+    return;
+  }
   const instance = basicLightbox.create(`
     <img src=${event.target.dataset.source} width="800" height="600">
 `);
 
   instance.show();
+
+  function escapeKeyDown(event) {
+    if (event.key === "Escape") {
+      instance.close();
+      document.removeEventListener("keydown", escapeKeyDown);
+    }
+  }
+
+  document.addEventListener("keydown", escapeKeyDown);
 });
 
 console.log(galleryItems);
