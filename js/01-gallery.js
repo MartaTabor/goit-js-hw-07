@@ -10,4 +10,13 @@ const galleryArray = galleryItems.map(
 
 gallery.innerHTML = galleryArray.join("");
 
+gallery.addEventListener("click", (event) => {
+  event.preventDefault();
+  const instance = basicLightbox.create(`
+    <img src=${event.target.dataset.source} width="800" height="600">
+`);
+
+  instance.show();
+});
+
 console.log(galleryItems);
