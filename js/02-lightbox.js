@@ -10,20 +10,10 @@ const galleryArray = galleryItems.map(
 
 gallery.innerHTML = galleryArray.join("");
 
-gallery.addEventListener("click", (event) => {
-  event.preventDefault();
-
-  if (event.target.nodeName !== "IMG") {
-    return;
-  }
-
-  const lightbox = new SimpleLightbox(".gallery a", {
-    captions: true,
-    captionType: "attr",
-    captionsData: "alt",
-    captionPosition: "bottom",
-    captionDelay: 250,
-  });
+const lightbox = new SimpleLightbox(".gallery a", {
+  captions: true,
+  captionType: "attr",
+  captionsData: "alt",
+  captionPosition: "bottom",
+  captionDelay: 250,
 });
-
-console.log(galleryItems);
